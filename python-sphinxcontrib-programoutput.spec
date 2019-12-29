@@ -116,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
+%doc CHANGES.rst LICENSE README.rst
 # XXX: shared dir
 %dir %{py_sitescriptdir}/sphinxcontrib
 %{py_sitescriptdir}/sphinxcontrib/programoutput
