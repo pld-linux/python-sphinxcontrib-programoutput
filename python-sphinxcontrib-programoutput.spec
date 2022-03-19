@@ -8,13 +8,13 @@
 Summary:	Sphinx extension to include program output
 Summary(pl.UTF-8):	Rozszerzenie Sphinksa do załączania wyjścia programu
 Name:		python-sphinxcontrib-programoutput
-Version:	0.15
-Release:	2
+Version:	0.17
+Release:	1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/sphinxcontrib-programoutput/
 Source0:	https://files.pythonhosted.org/packages/source/s/sphinxcontrib-programoutput/sphinxcontrib-programoutput-%{version}.tar.gz
-# Source0-md5:	797140fbf06b930862d8d78730e54e77
+# Source0-md5:	7bad912b0af6bb504819659ffe382199
 URL:		https://pypi.org/project/sphinxcontrib-programoutput/
 %if %(locale -a | grep -q '^C\.utf8$'; echo $?)
 BuildRequires:	glibc-localedb-all
