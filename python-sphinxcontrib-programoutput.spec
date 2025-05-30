@@ -8,6 +8,7 @@
 Summary:	Sphinx extension to include program output
 Summary(pl.UTF-8):	Rozszerzenie Sphinksa do załączania wyjścia programu
 Name:		python-sphinxcontrib-programoutput
+# keep 0.17 here for python2 support
 Version:	0.17
 Release:	5
 License:	BSD
@@ -36,7 +37,7 @@ BuildRequires:	python3-Sphinx >= 1.7.0
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with doc}
-BuildRequires:	sphinx-pdg >= 1.7.0
+BuildRequires:	sphinx-pdg-2 >= 1.7.0
 %endif
 Requires:	python-modules >= 1:2.7
 BuildArch:	noarch
@@ -99,7 +100,7 @@ PYTHONPATH=$(pwd)/src \
 
 %if %{with doc}
 PYTHONPATH=$(pwd)/src \
-sphinx-build -b html doc doc/_build/html
+sphinx-build-2 -b html doc doc/_build/html
 %endif
 
 %install
@@ -108,11 +109,14 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %py_install
 
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/sphinxcontrib/programoutput/tests
 %py_postclean
 %endif
 
 %if %{with python3}
 %py3_install
+
+%{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/sphinxcontrib/programoutput/tests
 %endif
 
 %clean
