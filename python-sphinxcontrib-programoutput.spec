@@ -89,7 +89,12 @@ LC_ALL=C.UTF-8 \
 %endif
 
 %if %{with python3}
-%py3_build %{?with_tests:test}
+%py3_build
+
+%if %{with tests}
+PYTHONPATH=$(pwd)/src \
+%{__python3} -m unittest discover -s src
+%endif
 %endif
 
 %if %{with doc}
