@@ -3,14 +3,14 @@
 %bcond_without	doc	# Sphinx documentation
 %bcond_without	tests	# unit tests
 %bcond_without	python2 # CPython 2.x module
-%bcond_without	python3 # CPython 3.x module
+%bcond_with	python3 # CPython 3.x module (built from python3-sphinxcontrib-programoutput.spec)
 
 Summary:	Sphinx extension to include program output
 Summary(pl.UTF-8):	Rozszerzenie Sphinksa do załączania wyjścia programu
 Name:		python-sphinxcontrib-programoutput
 # keep 0.17 here for python2 support
 Version:	0.17
-Release:	5
+Release:	6
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/sphinxcontrib-programoutput/
@@ -40,6 +40,7 @@ BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	sphinx-pdg-2 >= 1.7.0
 %endif
 Requires:	python-modules >= 1:2.7
+Requires:	python-sphinxcontrib
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,6 +59,7 @@ Summary:	Sphinx extension to include program output
 Summary(pl.UTF-8):	Rozszerzenie Sphinksa do załączania wyjścia programu
 Group:		Libraries/Python
 Requires:	python3-modules >= 1:3.5
+Requires:	python3-sphinxcontrib
 
 %description -n python3-sphinxcontrib-programoutput
 A Sphinx extension to literally insert the output of arbitrary
@@ -126,8 +128,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES.rst LICENSE README.rst
-# XXX: shared dir
-%dir %{py_sitescriptdir}/sphinxcontrib
 %{py_sitescriptdir}/sphinxcontrib/programoutput
 %{py_sitescriptdir}/sphinxcontrib_programoutput-%{version}-py*.egg-info
 %{py_sitescriptdir}/sphinxcontrib_programoutput-%{version}-py*-nspkg.pth
@@ -137,8 +137,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python3-sphinxcontrib-programoutput
 %defattr(644,root,root,755)
 %doc CHANGES.rst LICENSE README.rst
-# XXX: shared dir
-%dir %{py3_sitescriptdir}/sphinxcontrib
 %{py3_sitescriptdir}/sphinxcontrib/programoutput
 %{py3_sitescriptdir}/sphinxcontrib_programoutput-%{version}-py*.egg-info
 %{py3_sitescriptdir}/sphinxcontrib_programoutput-%{version}-py*-nspkg.pth
